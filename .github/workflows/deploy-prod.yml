@@ -1,4 +1,4 @@
-name: Dev account deployment
+name: Prod account deployment
 
 on:
   push:
@@ -7,7 +7,6 @@ on:
 jobs:
   deploy:
     name: deploy
-    runs-on: [self-hosted]
     env:
       STAGE_NAME: prod
       RELEASE_VERSION: ${{ github.ref_name }}
@@ -24,4 +23,4 @@ jobs:
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
-        TOKEN: ${{ secrets.TOKEN }}
+        TOKEN: ${{ secrets.PROD_TOKEN }}
