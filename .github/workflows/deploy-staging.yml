@@ -1,0 +1,27 @@
+name: Staging account deployment
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+  deploy:
+    name: deploy
+    runs-on: [self-hosted]
+    needs: build
+    env:
+      STAGE_NAME: prod
+      RELEASE_VERSION: ${{ github.ref_name }}
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 18
+      uses: actions/setup-node@v1
+      with:
+        node-version: 18
+    - name: serverless deploy
+      uses: serverless/github-action@master
+      with:
+        args: deploy -s staging
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.STAGING_AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.STAGING_AWS_SECRET_ACCESS_KEY }}
+        TOKEN: ${{ secrets.TOKEN }}
