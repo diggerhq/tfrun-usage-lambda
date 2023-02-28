@@ -20,12 +20,15 @@ def app(event, context):
     timestamp = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
     userid = payload.get("userid")
     action = payload.get("action")
+    event_name = payload.get("event_name")
+
     resp = client.put_item(
         TableName=USAGE_TABLE,
         Item={
             'pk': { 'S': str(uuid.uuid4()) },
             'userid': {'S': userid},
             'action': {'S': action},
+            'event_name': {'S': event_name},
             'timestamp': {'S': timestamp}
         },
     )
