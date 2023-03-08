@@ -10,11 +10,12 @@ custom:
     app: app.app
     packRequirements: false
   pythonRequirements:
-    dockerizePip: true
-
+    dockerizePip: non-linux
+    slim: true
+    dockerImage: lambci/lambda:build-python3.9
 provider:
   name: aws
-  runtime: python3.8
+  runtime: python3.9
   stage: prod
   region: us-east-1
   iamRoleStatements:
