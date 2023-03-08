@@ -1,3 +1,5 @@
 .serverless/
 venv/
 node_modules/
+.idea/
+

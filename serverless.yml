@@ -30,6 +30,7 @@ provider:
   environment:
     USAGE_TABLE: ${self:custom.tableName}
     TOKEN: ${env:TOKEN}
+    SLACK_WEBHOOK: ${env:SLACK_WEBHOOK}
 
   
 functions:
