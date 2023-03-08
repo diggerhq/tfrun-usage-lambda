@@ -60,6 +60,3 @@ resources:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
         TableName: ${self:custom.tableName}
-
-plugins:
-   - serverless-python-requirements
