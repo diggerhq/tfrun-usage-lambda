@@ -5,12 +5,13 @@ service: serverless-flask
  
 custom:
   tableName: 'users-table-${self:provider.stage}'
+
   wsgi:
     app: app.app
     packRequirements: false
   pythonRequirements:
     dockerizePip: non-linux
- 
+
 provider:
   name: aws
   runtime: python3.8
@@ -32,13 +33,13 @@ provider:
     TOKEN: ${env:TOKEN}
     SLACK_WEBHOOK: ${env:SLACK_WEBHOOK}
 
-  
+
 functions:
   app:
     handler: app.app
     events:
       - http: ANY /
-      - http: 'ANY {proxy+}' 
+      - http: 'ANY {proxy+}'
 
 
 resources:
@@ -58,3 +59,6 @@ resources:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
         TableName: ${self:custom.tableName}
+
+plugins:
+   - serverless-python-requirements
