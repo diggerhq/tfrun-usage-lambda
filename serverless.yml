@@ -14,7 +14,7 @@ custom:
 
 provider:
   name: aws
-  runtime: python3.9
+  runtime: python3.8
   stage: prod
   region: us-east-1
   iamRoleStatements:
@@ -59,6 +59,3 @@ resources:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
         TableName: ${self:custom.tableName}
-
-plugins:
-   - serverless-python-requirements
