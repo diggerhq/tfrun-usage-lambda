@@ -11,8 +11,7 @@ custom:
     packRequirements: false
   pythonRequirements:
     dockerizePip: non-linux
-    slim: true
-    dockerImage: lambci/lambda:build-python3.8
+
 provider:
   name: aws
   runtime: python3.8
